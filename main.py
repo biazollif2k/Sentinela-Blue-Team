@@ -6,7 +6,9 @@ print("==============================")
 
 print("\nSistema iniciado com sucesso!")
 
-from sistema import coletar_informacoes, coletar_processos, coletar_recursos
+from sistema import coletar_informacoes, coletar_recursos
+from processos import coletar_processos
+from rede import coletar_conexoes
 from relatorio import criar_relatorio
 from logger import registrar_evento
 from analise import analisar_processos
@@ -20,6 +22,11 @@ print("==============================")
 dados = coletar_informacoes()
 processos = coletar_processos()
 recursos = coletar_recursos()
+conexoes = coletar_conexoes()
+print("\nCONEXÕES DE REDE\n")
+
+for conexao in conexoes[:10]:
+    print(conexao)
 alertas = analisar_processos(processos)
 
 criar_relatorio(dados, processos, alertas, recursos)

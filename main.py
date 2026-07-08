@@ -1,12 +1,12 @@
 print("Meu projeto começou")
 print("==============================")
-print("       SENTINELA v1.0")
+print("       SENTINELA v1.5")
 print("  Ferramenta de Segurança")
 print("==============================")
 
 print("\nSistema iniciado com sucesso!")
 
-from sistema import coletar_informacoes, coletar_processos
+from sistema import coletar_informacoes, coletar_processos, coletar_recursos
 from relatorio import criar_relatorio
 from logger import registrar_evento
 from analise import analisar_processos
@@ -19,9 +19,10 @@ print("==============================")
 
 dados = coletar_informacoes()
 processos = coletar_processos()
+recursos = coletar_recursos()
 alertas = analisar_processos(processos)
 
-criar_relatorio(dados, processos, alertas)
+criar_relatorio(dados, processos, alertas, recursos)
 
 
 registrar_evento("Relatório gerado com sucesso")

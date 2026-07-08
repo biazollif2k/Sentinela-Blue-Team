@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-def criar_relatorio(dados, processos, alertas):
+def criar_relatorio(dados, processos, alertas, recursos):
 
     nome = "relatorio_seguranca.txt"
 
@@ -21,6 +21,13 @@ def criar_relatorio(dados, processos, alertas):
         arquivo.write("\n")
         arquivo.write("=" * 50 + "\n")
         arquivo.write("\n")
+
+        arquivo.write("\n")
+        arquivo.write("RECURSOS DO SISTEMA\n")
+        arquivo.write("-" * 50 + "\n")
+
+        for item, valor in recursos.items():
+            arquivo.write(f"{item:<22}: {valor}\n")
 
         arquivo.write("PROCESSOS EM EXECUÇÃO\n")
         arquivo.write("-" * 50 + "\n")

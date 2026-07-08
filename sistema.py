@@ -17,7 +17,9 @@ def coletar_informacoes():
 
     return dados
 
+
 def coletar_processos():
+
     processos = []
 
     for processo in psutil.process_iter(['pid', 'name']):
@@ -30,3 +32,14 @@ def coletar_processos():
             pass
 
     return processos
+
+
+def coletar_recursos():
+
+    recursos = {
+        "CPU (%)": psutil.cpu_percent(interval=1),
+        "Memória (%)": psutil.virtual_memory().percent,
+        "Disco (%)": psutil.disk_usage("/").percent
+    }
+
+    return recursos

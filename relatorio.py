@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-def criar_relatorio(dados, processos):
+def criar_relatorio(dados, processos, alertas):
 
     nome = "relatorio_seguranca.txt"
 
@@ -29,6 +29,20 @@ def criar_relatorio(dados, processos):
             arquivo.write(
                 f"PID: {processo['PID']:<8} Nome: {processo['Nome']}\n"
             )
+
+        arquivo.write("\n")
+        arquivo.write("PROCESSOS DE INTERESSE\n")
+        arquivo.write("-" * 50 + "\n")
+
+        if alertas:
+            for alerta in alertas:
+                arquivo.write(
+                    f"⚠ PID: {alerta['PID']:<8} Nome: {alerta['Nome']}\n"
+                )
+        else:
+            arquivo.write("Nenhum processo de interesse encontrado.\n")
+
+        arquivo.write(f"\nTotal encontrado: {len(alertas)}\n")
 
         arquivo.write("\n")
         arquivo.write("=" * 50 + "\n")

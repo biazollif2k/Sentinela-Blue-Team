@@ -9,6 +9,7 @@ print("\nSistema iniciado com sucesso!")
 from sistema import coletar_informacoes, coletar_processos
 from relatorio import criar_relatorio
 from logger import registrar_evento
+from analise import analisar_processos
 
 registrar_evento("Sistema iniciado")
 
@@ -18,8 +19,9 @@ print("==============================")
 
 dados = coletar_informacoes()
 processos = coletar_processos()
+alertas = analisar_processos(processos)
 
-criar_relatorio(dados, processos)
+criar_relatorio(dados, processos, alertas)
 
 
 registrar_evento("Relatório gerado com sucesso")
